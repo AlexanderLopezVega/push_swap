@@ -63,14 +63,22 @@ libft/*
 
 #	Project
 #		Source files
-!ft_ffree.c
-!ft_parse.c
-!ft_sfree.c
 !ft_solve.c
+!ft_stack_clear.c
 !ft_stack_del.c
-!ft_stack_iter.c
+!ft_stack_detach.c
 !ft_stack_new.c
-!ft_stack_push.c
+!ft_stack_parse.c
+!ft_stack_pushback.c
+!ft_stack_pushfront.c
+!ft_stack_popback.c
+!ft_stack_popfront.c
+!ft_stack_print.c
+!ft_stack_printint.c
+!ft_stack_printstr.c
+!ft_stack_rotate.c
+!ft_stack_rrotate.c
+!ft_stack_swap.c
 !ft_strtoi.c
 !push_swap.c
 

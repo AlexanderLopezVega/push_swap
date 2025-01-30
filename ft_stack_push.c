@@ -5,22 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alopez-v <alopez-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 11:35:59 by alopez-v          #+#    #+#             */
-/*   Updated: 2025/01/30 13:03:23 by alopez-v         ###   ########.fr       */
+/*   Created: 2025/01/30 14:53:27 by alopez-v          #+#    #+#             */
+/*   Updated: 2025/01/30 16:21:03 by alopez-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_stack_push(t_stack *stack, void *content)
+void	ft_stack_push(t_stack **from, t_stack **to)
 {
-	t_list	*node;
-
-	if (!stack || !content)
-		return (0);
-	node = ft_lstnew(content);
-	if (!node)
-		return (0);
-	ft_lstadd_back(&stack->lst, node);
-	return (1);
+	if (!from || !to || !*from)
+		return ;
+	ft_stack_pushfront(to, ft_stack_popfront(from));
 }

@@ -6,9 +6,12 @@
 /*   By: alopez-v <alopez-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:20:28 by alopez-v          #+#    #+#             */
-/*   Updated: 2025/01/30 13:03:23 by alopez-v         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:49:19 by alopez-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
+#include <stdlib.h>
 
 static int	ft_isspace(const char c)
 {
@@ -61,7 +64,7 @@ static int	ft_getexp(char *ptr, int *num)
 	return (start != ptr);
 }
 
-int	ft_strtoi(const char *str, int *result)
+int	ft_strtoi(const char *str, int **result)
 {
 	char	*iter;
 	int		sign;
@@ -74,6 +77,9 @@ int	ft_strtoi(const char *str, int *result)
 	sign = ft_getsign(iter);
 	if (!ft_getexp(iter, &exponent))
 		return (0);
-	*result = sign * exponent;
+	*result = malloc(sizeof(int));
+	if (!result)
+		return (0);
+	**result = sign * exponent;
 	return (1);
 }

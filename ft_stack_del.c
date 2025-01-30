@@ -5,17 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alopez-v <alopez-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 11:43:02 by alopez-v          #+#    #+#             */
-/*   Updated: 2025/01/30 13:03:21 by alopez-v         ###   ########.fr       */
+/*   Created: 2025/01/30 14:17:52 by alopez-v          #+#    #+#             */
+/*   Updated: 2025/01/30 15:26:06 by alopez-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
-void	ft_stack_del(t_stack **stack, void (*del)(void *))
+void	ft_stack_del(t_stack *node, void (*del)(void *))
 {
-	if (!stack)
+	if (!node || !del)
 		return ;
-	ft_lstclear(&(*stack)->lst, del);
-	ft_ffree((void **)stack);
+	del(node->content);
+	free(node);
 }

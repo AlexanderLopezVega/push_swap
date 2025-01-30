@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sfree.c                                         :+:      :+:    :+:   */
+/*   ft_stack_rrotate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alopez-v <alopez-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 11:38:32 by alopez-v          #+#    #+#             */
-/*   Updated: 2025/01/30 13:03:20 by alopez-v         ###   ########.fr       */
+/*   Created: 2025/01/30 15:12:43 by alopez-v          #+#    #+#             */
+/*   Updated: 2025/01/30 15:15:03 by alopez-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
 
-void	ft_sfree(void *ptr)
+void	ft_stack_rrotate(t_stack **stack)
 {
-	if (ptr)
-		free(ptr);
+	if (!stack || !*stack)
+		return ;
+	*stack = (*stack)->next;
 }

@@ -6,42 +6,28 @@
 /*   By: alopez-v <alopez-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:09:44 by alopez-v          #+#    #+#             */
-/*   Updated: 2025/01/30 13:03:15 by alopez-v         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:19:07 by alopez-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <unistd.h>
-
-static void	ft_print(void *ptr)
-{
-	ft_putendl_fd((char *)ptr, STDOUT_FILENO);
-}
+#include "libft.h"
+#include <stdlib.h>
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_instructions;
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int		result;
-
-	result = 1;
-	stack_instructions = NULL;
-	stack_a = ft_parse(argc, argv);
-	stack_b = ft_stack_new();
-	if (stack_a && stack_b)
-	{
-		stack_instructions = ft_solve(stack_a, stack_b);
-		if (stack_instructions)
-		{
-			ft_stack_iter(stack_instructions, ft_print);
-			result = 0;
-		}
-	}
-	ft_stack_del(&stack_instructions, ft_sfree);
-	ft_stack_del(&stack_a, ft_sfree);
-	ft_stack_del(&stack_b, ft_sfree);
-	if (result)
-		ft_putendl_fd("Error", STDERR_FILENO);
-	return (result);
+	t_stack	*instructions;
+	t_stack	*a;
+	t_stack	*b;
+	
+	instructions = NULL;
+	a = ft_stack_parse(argc, argv);
+	b = NULL;
+	if (!a || !ft_solve(&a, &b, &instructions))
+		ft_putendl_fd("Error", 2);
+	else
+		ft_stack_print(instructions, ft_stack_printstr);
+	ft_stack_clear(&instructions, free);
+	ft_stack_clear(&a, free);
+	ft_stack_clear(&b, free);
 }

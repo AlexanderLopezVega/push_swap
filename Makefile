@@ -10,14 +10,23 @@ REMOVE			=	rm -f
 DIR_LIBFT		=	libft
 
 #	Files
-FILES_SOURCE	=	ft_ffree.c \
-					ft_parse.c \
-					ft_sfree.c \
-					ft_solve.c \
+FILES_SOURCE	=	ft_solve.c \
+					ft_stack_clear.c \
 					ft_stack_del.c \
-					ft_stack_iter.c \
+					ft_stack_detach.c \
 					ft_stack_new.c \
+					ft_stack_parse.c \
+					ft_stack_popback.c \
+					ft_stack_popfront.c \
+					ft_stack_print.c \
+					ft_stack_printint.c \
+					ft_stack_printstr.c \
+					ft_stack_pushback.c \
 					ft_stack_push.c \
+					ft_stack_pushfront.c \
+					ft_stack_rotate.c \
+					ft_stack_rrotate.c \
+					ft_stack_swap.c \
 					ft_strtoi.c \
 					push_swap.c
 FILES_OBJECT	=	$(FILES_SOURCE:.c=.o)
@@ -48,4 +57,4 @@ $(NAME):	$(FILES_OBJECT) $(FILE_LIBFT)
 $(FILE_LIBFT):
 	$(MAKE) -C $(DIR_LIBFT) bonus
 
-.PHONY:	all clean fclean %.o
+.PHONY:	all clean fclean re %.o
