@@ -6,7 +6,7 @@
 /*   By: alopez-v <alopez-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 10:56:53 by alopez-v          #+#    #+#             */
-/*   Updated: 2025/01/31 16:23:26 by alopez-v         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:45:58 by alopez-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_stack
 }					t_stack;
 
 //	Functions
-t_stack				*ft_invoke_best(t_stack *stack_a, t_stack *stack_b);
+void				ft_invoke_best(t_stack *stack_a, t_stack *stack_b);
 void				ft_solve(t_stack **stack_a, t_stack **stack_b);
 void				ft_stack_clear(t_stack **stack, void (*del)(void *));
 size_t				ft_stack_count(const t_stack *stack, const size_t max);

@@ -6,14 +6,19 @@
 /*   By: alopez-v <alopez-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 14:50:51 by alopez-v          #+#    #+#             */
-/*   Updated: 2025/01/31 16:42:19 by alopez-v         ###   ########.fr       */
+/*   Updated: 2025/01/31 17:01:25 by alopez-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
 
-t_stack	*ft_invoke_best(t_stack *stack_a, t_stack *stack_b)
+t_stack	*ft_get_best_ops()
+{
+	
+}
+
+void	ft_invoke_best(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack	*best_op_stack;
 	t_stack	*op_stack;
@@ -43,5 +48,5 @@ t_stack	*ft_invoke_best(t_stack *stack_a, t_stack *stack_b)
 			ft_stack_clear(op_stack, free);
 		node = node->next;
 	}
-	return (best_op_stack);
+	
 }
