@@ -10,8 +10,11 @@ REMOVE			=	rm -f
 DIR_LIBFT		=	libft
 
 #	Files
-FILES_SOURCE	=	ft_solve.c \
+FILES_SOURCE	=	\
+					ft_invoke_best.c \
+					ft_solve.c \
 					ft_stack_clear.c \
+					ft_stack_count.c \
 					ft_stack_del.c \
 					ft_stack_detach.c \
 					ft_stack_new.c \
@@ -21,13 +24,15 @@ FILES_SOURCE	=	ft_solve.c \
 					ft_stack_print.c \
 					ft_stack_printint.c \
 					ft_stack_printstr.c \
-					ft_stack_pushback.c \
+					ft_stack_push_all.c \
 					ft_stack_push.c \
 					ft_stack_pushfront.c \
+					ft_stack_pushback.c \
 					ft_stack_rotate.c \
 					ft_stack_rrotate.c \
 					ft_stack_swap.c \
 					ft_strtoi.c \
+					ft_validate.c \
 					push_swap.c
 FILES_OBJECT	=	$(FILES_SOURCE:.c=.o)
 FILE_LIBFT		=	$(DIR_LIBFT)/libft.a

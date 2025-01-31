@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_clear.c                                   :+:      :+:    :+:   */
+/*   ft_stack_count.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alopez-v <alopez-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 15:23:52 by alopez-v          #+#    #+#             */
-/*   Updated: 2025/01/31 14:50:38 by alopez-v         ###   ########.fr       */
+/*   Created: 2025/01/31 13:54:07 by alopez-v          #+#    #+#             */
+/*   Updated: 2025/01/31 14:49:46 by alopez-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_stack_clear(t_stack **stack, void (*del)(void *))
+size_t	ft_stack_count(const t_stack *stack, const size_t max)
 {
-	t_stack *node;
+	t_stack	*node;
+	size_t	count;
 
-	if (!stack  || !*stack || !del)
-		return ;
-	node = ft_stack_popback(stack);
-	while (node)
+	if (!stack)
+		return (0);
+	if (stack->next == stack)
+		return (1);
+	node = stack->next;
+	count = 1;
+	while (node && node != stack)
 	{
-		ft_stack_del(node, del);
-		node = ft_stack_popback(stack);
+		if (max > 0 && count < max)
+			return (count);
+		++count;
+		node = node->next;
 	}
+	return (count);
 }
