@@ -10,11 +10,11 @@ BINARY_DIR = bin
 # Files
 SOURCE_FILES = main.c
 OBJECT_FILES = $(SOURCE_FILES:.c=.o)
-BINARY_FILE = push_swap
+NAME = push_swap
 
 SOURCE_FILES_ABS = $(patsubst %.c, $(SOURCE_DIR)/%.c, $(SOURCE_FILES))
 OBJECT_FILES_ABS = $(patsubst %.o, $(OBJECT_DIR)/%.o, $(OBJECT_FILES))
-BINARY_FILE_ABS = $(BINARY_DIR)/$(BINARY_FILE)
+BINARY_FILE_ABS = $(BINARY_DIR)/$(NAME)
 
 # Targets
 $(BINARY_FILE_ABS): $(OBJECT_FILES_ABS)
@@ -25,7 +25,7 @@ $(OBJECT_FILES_ABS): $(SOURCE_FILES_ABS)
 	mkdir -p $(OBJECT_DIR)
 	$(CC) $(CFLAGS) -c -o $@ $^
 
-all: $(BINARY_FILE_ABS)
+all: $(NAME)
 
 clean:
 	rm -rf $(OBJECT_DIR)
