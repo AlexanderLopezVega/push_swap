@@ -6,6 +6,7 @@ CFLAGS = -Wall -Werror -Wextra
 SOURCE_DIR = src
 OBJECT_DIR = obj
 BINARY_DIR = bin
+HEADER_DIR = include
 
 # Files
 SOURCE_FILES = main.c
@@ -19,13 +20,13 @@ BINARY_FILE_ABS = $(BINARY_DIR)/$(NAME)
 # Targets
 $(BINARY_FILE_ABS): $(OBJECT_FILES_ABS)
 	mkdir -p $(BINARY_DIR)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) $^ -o $@ -I $(HEADER_DIR)
 
 $(OBJECT_FILES_ABS): $(SOURCE_FILES_ABS)
 	mkdir -p $(OBJECT_DIR)
-	$(CC) $(CFLAGS) -c -o $@ $^
+	$(CC) $(CFLAGS) $^ -c -o $@ -I $(HEADER_DIR)
 
-all: $(NAME)
+all: $(BINARY_FILE_ABS)
 
 clean:
 	rm -rf $(OBJECT_DIR)

@@ -1,5 +1,6 @@
 *
 
 !src
+!include
 !Makefile
 !subject.pdf
