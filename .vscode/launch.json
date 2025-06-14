@@ -2,11 +2,23 @@
   "version": "0.2.0",
   "configurations": [
 	{
-	  "name": "Debug C program",
+	  "name": "Debug push_swap",
 	  "type": "cppdbg",
 	  "request": "launch",
 	  "program": "${workspaceFolder}/push_swap/bin/push_swap",
 	  "args": ["1", "2", "3"],
+	  "stopAtEntry": false,
+	  "cwd": "${workspaceFolder}",
+	  "environment": [],
+	  "externalConsole": false,
+	  "MIMode": "gdb"
+	},
+	{
+	  "name": "Debug test",
+	  "type": "cppdbg",
+	  "request": "launch",
+	  "program": "${workspaceFolder}/test/bin/test_parse_int",
+	  "args": [],
 	  "stopAtEntry": false,
 	  "cwd": "${workspaceFolder}",
 	  "environment": [],

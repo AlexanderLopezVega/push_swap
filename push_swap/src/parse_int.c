@@ -6,7 +6,7 @@
 /*   By: alopez-v <alopez-v@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:18:57 by alopez-v          #+#    #+#             */
-/*   Updated: 2025/06/14 18:34:19 by alopez-v         ###   ########.fr       */
+/*   Updated: 2025/06/14 19:52:05 by alopez-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	parse_int(const char *str, int *output)
 	int		sign;
 	int		num;
 
-	if (!str)
+	if (!str || str[0] == '\0')
 		return (0);
 	i = 0;
 	while (str[i] && is_space(str[i]))
@@ -52,6 +52,7 @@ int	parse_int(const char *str, int *output)
 			sign = -sign;
 		++i;
 	}
+	num = 0;
 	while (str[i] && is_digit(str[i]))
 	{
 		num = (num * 10) + digit_to_int(str[i]);
