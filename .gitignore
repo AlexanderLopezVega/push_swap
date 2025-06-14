@@ -1,6 +1,10 @@
 *
 
 !src
+src/*
+!src/main.c
 !include
+include/*
+!include/push_swap.h
 !Makefile
 !subject.pdf
