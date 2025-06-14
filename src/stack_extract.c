@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   stack_extract.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alopez-v <alopez-v@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/14 16:12:39 by alopez-v          #+#    #+#             */
-/*   Updated: 2025/06/14 18:24:36 by alopez-v         ###   ########.fr       */
+/*   Created: 2025/06/14 17:11:16 by alopez-v          #+#    #+#             */
+/*   Updated: 2025/06/14 18:17:52 by alopez-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <stddef.h>
 #include "push_swap.h"
 
-void	print_node(void *content)
+t_stack	*stack_extract(t_stack **stack)
 {
-	printf("%d", *(int *)(content));
-}
+	t_stack	*node;
 
-int	main(int argc, char **argv)
-{
-	t_stack	*stack;
-
-	if (argc >= 2)
+	if (!stack || !*stack)
+		return (NULL);
+	node = *stack;
+	if (node->next == node || node->prev == node)
+		*stack = NULL;
+	else
 	{
-		stack = stack_parse(argc, argv);
-		if (stack)
-		{
-			printf("Stack parsed correctly\n");
-			stack_apply(stack, print_node);
-			stack_delete(stack, &free);
-			return (0);
-		}
+		node->next->prev = node->prev;
+		node->prev->next = node->next;
+		*stack = node->next;
+		node->next = node;
+		node->prev = node;
 	}
-	printf("Error\n");
-	return (1);
+	return (node);
 }

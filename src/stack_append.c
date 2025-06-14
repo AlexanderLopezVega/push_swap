@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   stack_append.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alopez-v <alopez-v@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/14 16:12:39 by alopez-v          #+#    #+#             */
-/*   Updated: 2025/06/14 18:24:36 by alopez-v         ###   ########.fr       */
+/*   Created: 2025/06/14 16:58:48 by alopez-v          #+#    #+#             */
+/*   Updated: 2025/06/14 17:35:37 by alopez-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "push_swap.h"
 
-void	print_node(void *content)
+void	stack_append(t_stack **stack, t_stack *node)
 {
-	printf("%d", *(int *)(content));
-}
+	t_stack	*first;
 
-int	main(int argc, char **argv)
-{
-	t_stack	*stack;
-
-	if (argc >= 2)
+	if (!stack || !node)
+		return ;
+	if (!*stack)
 	{
-		stack = stack_parse(argc, argv);
-		if (stack)
-		{
-			printf("Stack parsed correctly\n");
-			stack_apply(stack, print_node);
-			stack_delete(stack, &free);
-			return (0);
-		}
+		*stack = node;
+		return ;
 	}
-	printf("Error\n");
-	return (1);
+	first = *stack;
+	node->next = first;
+	node->prev = first->prev;
+	first->prev->next = node;
+	first->prev = node;
 }

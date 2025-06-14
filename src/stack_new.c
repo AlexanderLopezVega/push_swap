@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   stack_new.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alopez-v <alopez-v@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/14 16:12:39 by alopez-v          #+#    #+#             */
-/*   Updated: 2025/06/14 18:24:36 by alopez-v         ###   ########.fr       */
+/*   Created: 2025/06/14 16:44:29 by alopez-v          #+#    #+#             */
+/*   Updated: 2025/06/14 17:00:51 by alopez-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <stddef.h>
 #include <stdlib.h>
 #include "push_swap.h"
 
-void	print_node(void *content)
+t_stack	*stack_new(void *content)
 {
-	printf("%d", *(int *)(content));
-}
+	t_stack	*node;
 
-int	main(int argc, char **argv)
-{
-	t_stack	*stack;
-
-	if (argc >= 2)
-	{
-		stack = stack_parse(argc, argv);
-		if (stack)
-		{
-			printf("Stack parsed correctly\n");
-			stack_apply(stack, print_node);
-			stack_delete(stack, &free);
-			return (0);
-		}
-	}
-	printf("Error\n");
-	return (1);
+	node = malloc(sizeof(t_stack));
+	if (!node)
+		return (NULL);
+	node->content = content;
+	node->prev = node;
+	node->next = node;
+	return (node);
 }
